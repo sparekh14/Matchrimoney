@@ -4,8 +4,6 @@ buildCommand = "cd backend && npm install && npx prisma generate && npx prisma m
 
 [deploy]
 startCommand = "cd backend && node dist/index.js"
-healthcheckPath = "/api/health"
-healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
 
