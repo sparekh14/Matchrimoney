@@ -45,7 +45,7 @@ const profileSchema = z.object({
 type ProfileFormData = z.infer<typeof profileSchema>;
 
 const ProfilePage: React.FC = () => {
-  const { user: currentUser, updateUser } = useAuth();
+  const { updateUser } = useAuth();
   const [user, setUser] = useState<UserType | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);

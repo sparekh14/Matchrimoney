@@ -1,19 +1,11 @@
 import axios from 'axios';
 import type {
-  AuthResponse,
   LoginCredentials,
   SignupData,
-  User,
-  PublicUser,
   ProfileUpdateData,
-  MarketplaceResponse,
   SearchFilters,
-  Match,
   CreateMatchRequest,
-  Message,
-  Conversation,
   SendMessageRequest,
-  ApiResponse,
   ApiError,
 } from '../types/index.js';
 
@@ -66,7 +58,7 @@ const handleError = (error: any): never => {
 
 // Authentication API
 export const authApi = {
-  signup: async (data: SignupData): Promise<ApiResponse> => {
+  signup: async (data: SignupData) => {
     try {
       const response = await api.post('/auth/signup', data);
       return handleResponse(response);
@@ -75,7 +67,7 @@ export const authApi = {
     }
   },
 
-  login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
+  login: async (credentials: LoginCredentials) => {
     try {
       const response = await api.post('/auth/login', credentials);
       return handleResponse(response);
@@ -84,7 +76,7 @@ export const authApi = {
     }
   },
 
-  verifyEmail: async (token: string): Promise<ApiResponse> => {
+  verifyEmail: async (token: string) => {
     try {
       const response = await api.post('/auth/verify-email', { token });
       return handleResponse(response);
@@ -93,7 +85,7 @@ export const authApi = {
     }
   },
 
-  resendVerification: async (email: string): Promise<ApiResponse> => {
+  resendVerification: async (email: string) => {
     try {
       const response = await api.post('/auth/resend-verification', { email });
       return handleResponse(response);
@@ -102,7 +94,7 @@ export const authApi = {
     }
   },
 
-  forgotPassword: async (email: string): Promise<ApiResponse> => {
+  forgotPassword: async (email: string) => {
     try {
       const response = await api.post('/auth/forgot-password', { email });
       return handleResponse(response);
@@ -111,7 +103,7 @@ export const authApi = {
     }
   },
 
-  resetPassword: async (token: string, password: string): Promise<ApiResponse> => {
+  resetPassword: async (token: string, password: string) => {
     try {
       const response = await api.post('/auth/reset-password', { token, password });
       return handleResponse(response);
@@ -123,7 +115,7 @@ export const authApi = {
 
 // User API
 export const userApi = {
-  getProfile: async (): Promise<{ user: User }> => {
+  getProfile: async () => {
     try {
       const response = await api.get('/users/profile');
       return handleResponse(response);
@@ -132,7 +124,7 @@ export const userApi = {
     }
   },
 
-  updateProfile: async (data: ProfileUpdateData): Promise<{ user: User; message: string }> => {
+  updateProfile: async (data: ProfileUpdateData) => {
     try {
       const response = await api.put('/users/profile', data);
       return handleResponse(response);
@@ -141,7 +133,7 @@ export const userApi = {
     }
   },
 
-  getMarketplace: async (filters?: SearchFilters): Promise<MarketplaceResponse> => {
+  getMarketplace: async (filters?: SearchFilters) => {
     try {
       // Manually construct query parameters to handle arrays properly
       const params = new URLSearchParams();
@@ -169,7 +161,7 @@ export const userApi = {
     }
   },
 
-  getUserById: async (id: string): Promise<{ user: PublicUser }> => {
+  getUserById: async (id: string) => {
     try {
       const response = await api.get(`/users/${id}`);
       return handleResponse(response);
@@ -178,7 +170,7 @@ export const userApi = {
     }
   },
 
-  uploadProfilePicture: async (formData: FormData): Promise<{ user: User; message: string }> => {
+  uploadProfilePicture: async (formData: FormData) => {
     try {
       const response = await api.post('/users/profile/upload-picture', formData, {
         headers: {
@@ -191,7 +183,7 @@ export const userApi = {
     }
   },
 
-  removeProfilePicture: async (): Promise<{ user: User; message: string }> => {
+  removeProfilePicture: async () => {
     try {
       const response = await api.delete('/users/profile/remove-picture');
       return handleResponse(response);
@@ -200,7 +192,7 @@ export const userApi = {
     }
   },
 
-  changePassword: async (data: { currentPassword: string; newPassword: string }): Promise<{ message: string }> => {
+  changePassword: async (data: { currentPassword: string; newPassword: string }) => {
     try {
       const response = await api.put('/users/profile/change-password', data);
       return handleResponse(response);
@@ -212,7 +204,7 @@ export const userApi = {
 
 // Matches API
 export const matchApi = {
-  createMatch: async (data: CreateMatchRequest): Promise<{ match: Match; message: string }> => {
+  createMatch: async (data: CreateMatchRequest) => {
     try {
       const response = await api.post('/matches', data);
       return handleResponse(response);
@@ -221,7 +213,7 @@ export const matchApi = {
     }
   },
 
-  getMatches: async (status?: string): Promise<{ matches: Match[] }> => {
+  getMatches: async (status?: string) => {
     try {
       const response = await api.get('/matches', {
         params: status ? { status } : undefined,
@@ -232,7 +224,7 @@ export const matchApi = {
     }
   },
 
-  getMatchById: async (id: string): Promise<{ match: Match }> => {
+  getMatchById: async (id: string) => {
     try {
       const response = await api.get(`/matches/${id}`);
       return handleResponse(response);
@@ -244,7 +236,7 @@ export const matchApi = {
   respondToMatch: async (
     id: string,
     action: 'accept' | 'decline'
-  ): Promise<{ match: Match; message: string }> => {
+  ) => {
     try {
       const response = await api.put(`/matches/${id}/action`, { action });
       return handleResponse(response);
@@ -256,7 +248,7 @@ export const matchApi = {
 
 // Messages API
 export const messageApi = {
-  sendMessage: async (data: SendMessageRequest): Promise<{ data: Message; message: string }> => {
+  sendMessage: async (data: SendMessageRequest) => {
     try {
       const response = await api.post('/messages', data);
       return handleResponse(response);
@@ -265,7 +257,7 @@ export const messageApi = {
     }
   },
 
-  getConversations: async (): Promise<{ conversations: Conversation[] }> => {
+  getConversations: async () => {
     try {
       const response = await api.get('/messages/conversations');
       return handleResponse(response);
@@ -278,7 +270,7 @@ export const messageApi = {
     matchId: string,
     page?: number,
     limit?: number
-  ): Promise<{ messages: Message[]; pagination: any }> => {
+  ) => {
     try {
       const response = await api.get(`/messages/conversation/${matchId}`, {
         params: { page, limit },
@@ -289,7 +281,7 @@ export const messageApi = {
     }
   },
 
-  markMessagesRead: async (messageIds: string[]): Promise<{ updatedCount: number }> => {
+  markMessagesRead: async (messageIds: string[]) => {
     try {
       const response = await api.put('/messages/mark-read', { messageIds });
       return handleResponse(response);
@@ -298,7 +290,7 @@ export const messageApi = {
     }
   },
 
-  markConversationRead: async (matchId: string): Promise<{ updatedCount: number }> => {
+  markConversationRead: async (matchId: string) => {
     try {
       const response = await api.put(`/messages/mark-conversation-read/${matchId}`);
       return handleResponse(response);
@@ -307,7 +299,7 @@ export const messageApi = {
     }
   },
 
-  getUnreadCount: async (): Promise<{ unreadCount: number }> => {
+  getUnreadCount: async () => {
     try {
       const response = await api.get('/messages/unread-count');
       return handleResponse(response);

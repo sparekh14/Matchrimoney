@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { CheckCircle, XCircle, Heart, RefreshCw } from 'lucide-react';
+import { CheckCircle, XCircle, Heart } from 'lucide-react';
 import { authApi } from '../services/api.js';
 import type { ApiError } from '../types/index.js';
 import LoadingSpinner from '../components/ui/LoadingSpinner.js';
