@@ -49,7 +49,7 @@ app.use('/api/messages', messageRoutes);
 app.use(errorHandler);
 
 // 404 handler
-app.use('*path', (req, res) => {
+app.use('*', (req, res) => {
   res.status(404).json({ error: 'Endpoint not found' });
 });
 
