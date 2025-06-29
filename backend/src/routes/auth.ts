@@ -20,7 +20,7 @@ import prisma from '../utils/prisma.js';
 const router = Router();
 
 // POST /api/auth/signup
-router.post('/signup', async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+router.post('/signup', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const validatedData = signupSchema.parse(req.body);
     
@@ -84,7 +84,7 @@ router.post('/signup', async (req: Request, res: Response, next: NextFunction): 
 });
 
 // POST /api/auth/login
-router.post('/login', async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+router.post('/login', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, password } = loginSchema.parse(req.body);
 
