@@ -5,9 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "dev": "bun run --watch index.ts",
-    "start": "bun run index.ts",
-    "build": "bun build index.ts --outdir ./dist --target node",
-    "start:prod": "node dist/index.js",
+    "start": "node index.js",
+    "start:bun": "bun run index.ts",
+    "build": "tsc",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
@@ -15,7 +15,7 @@
     "db:seed": "bun run prisma/seed.ts",
     "db:studio": "prisma studio",
     "type-check": "tsc --noEmit",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate && npm run build"
   },
   "keywords": [
     "wedding",
@@ -53,5 +53,9 @@
     "nodemailer": "^7.0.3",
     "uuid": "^11.1.0",
     "zod": "^3.25.67"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   }
 }
