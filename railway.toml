@@ -1,9 +1,9 @@
 [build]
 builder = "nixpacks"
-buildCommand = "cd backend && npm install && npm run build"
+buildCommand = "cd backend && npm install && npx tsc -p tsconfig.build.json"
 
 [deploy]
-startCommand = "cd backend && npm start"
+startCommand = "cd backend && node dist/index.js"
 healthcheckPath = "/api/health"
 healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"

@@ -5,9 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "dev": "bun run --watch index.ts",
-    "start": "node index.js",
+    "start": "node dist/index.js",
     "start:bun": "bun run index.ts",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
