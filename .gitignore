@@ -114,3 +114,4 @@ prisma/migrations/**/migration.sql
 
 # Vercel
 .vercel 
+.vercel
