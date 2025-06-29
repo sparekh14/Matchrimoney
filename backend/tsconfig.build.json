@@ -1,14 +1,19 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": false,
     "target": "ES2020",
     "module": "CommonJS",
     "moduleResolution": "node",
     "outDir": "./dist",
     "rootDir": "./",
-    "allowImportingTsExtensions": false,
-    "verbatimModuleSyntax": false
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": false,
+    "noEmit": false,
+    "allowJs": true
   },
   "include": [
     "index.ts",
@@ -16,6 +21,7 @@
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "**/*.test.ts"
   ]
 } 
