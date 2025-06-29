@@ -388,7 +388,7 @@ const SignupPage: React.FC = () => {
                   Wedding Location
                 </label>
                 <div className="input-field-container">
-                  <GeoapifyContext apiKey="40a230ecfd9e4d15ad2b61afe78752da">
+                  <GeoapifyContext apiKey={import.meta.env.VITE_GEOAPIFY_API_KEY}>
                     <GeoapifyGeocoderAutocomplete
                       placeholder="Start typing a city or address"
                       placeSelect={handleLocationSelect}
