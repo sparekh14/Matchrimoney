@@ -13,6 +13,7 @@ import VerifyEmailPage from './pages/VerifyEmailPage.js';
 import MarketplacePage from './pages/MarketplacePage.js';
 import ProfilePage from './pages/ProfilePage.js';
 import MessagesPage from './pages/MessagesPage.js';
+import VendorPage from './pages/VendorPage.js';
 
 import './App.css';
 
@@ -68,6 +69,14 @@ const App: React.FC = () => {
                 element={
                   <ProtectedRoute>
                     <MessagesPage />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/vendors" 
+                element={
+                  <ProtectedRoute>
+                    <VendorPage />
                   </ProtectedRoute>
                 } 
               />

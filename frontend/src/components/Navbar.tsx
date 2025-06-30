@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Heart, Menu, X, MessageCircle, User, LogOut, Users } from 'lucide-react';
+import { Heart, Menu, X, MessageCircle, User, LogOut, Users, Store } from 'lucide-react';
 import { useAuth } from '../context/AuthContext.js';
 
 const Navbar: React.FC = () => {
@@ -47,6 +47,13 @@ const Navbar: React.FC = () => {
                 >
                   <MessageCircle className="h-4 w-4" />
                   <span>Messages</span>
+                </Link>
+                <Link
+                  to="/vendors"
+                  className="text-gray-700 hover:text-primary-600 font-medium transition-colors flex items-center space-x-1"
+                >
+                  <Store className="h-4 w-4" />
+                  <span>Vendors</span>
                 </Link>
                 <Link
                   to="/profile"
@@ -112,17 +119,27 @@ const Navbar: React.FC = () => {
                   </Link>
                   <Link
                     to="/messages"
-                    className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium"
+                    className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium flex items-center space-x-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Messages
+                    <MessageCircle className="h-4 w-4" />
+                    <span>Messages</span>
+                  </Link>
+                  <Link
+                    to="/vendors"
+                    className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium flex items-center space-x-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Store className="h-4 w-4" />
+                    <span>Vendors</span>
                   </Link>
                   <Link
                     to="/profile"
-                    className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium"
+                    className="block px-3 py-2 text-gray-700 hover:text-primary-600 font-medium flex items-center space-x-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Profile
+                    <User className="h-4 w-4" />
+                    <span>Profile</span>
                   </Link>
                   <button
                     onClick={handleLogout}
