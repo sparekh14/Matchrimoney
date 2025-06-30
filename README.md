@@ -82,13 +82,13 @@ For support, email matchrimonyhelp@gmail.com or create an issue in the GitHub re
 
 ### Phase 2 (Planned)
 - 💬 Messaging system
+- 🏪 Vendor marketplace
 - 📅 Calendar integration
 - 📱 Mobile app
 
 ### Phase 3 (Future)
 - 🤖 AI-powered recommendations
 - 🎥 Video calling
-- 📍 Vendor directory
 - 📈 Cost tracking
 - 🌍 International expansion
 
