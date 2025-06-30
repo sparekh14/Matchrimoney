@@ -6,8 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 const s3Client = new S3Client({
   region: process.env.AWS_REGION || 'us-east-1',
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+    accessKeyId: process.env.S3_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!,
   },
 });
 
@@ -130,8 +130,8 @@ export function extractS3KeyFromUrl(url: string): string | null {
  */
 export function isS3Configured(): boolean {
   return !!(
-    process.env.AWS_ACCESS_KEY_ID &&
-    process.env.AWS_SECRET_ACCESS_KEY &&
+    process.env.S3_ACCESS_KEY_ID &&
+    process.env.S3_SECRET_ACCESS_KEY &&
     process.env.AWS_REGION &&
     process.env.AWS_S3_BUCKET_NAME
   );
