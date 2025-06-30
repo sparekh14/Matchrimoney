@@ -1,6 +1,6 @@
 [build]
-  # Build command for the frontend
-  command = "npm run build:frontend"
+  # Build command for the frontend (install dependencies first)
+  command = "npm ci && npm run build:netlify"
   # Publish directory for the frontend
   publish = "frontend/dist"
   # Functions directory
