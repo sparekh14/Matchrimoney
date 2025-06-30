@@ -111,7 +111,3 @@ prisma/migrations/**/migration.sql
 # Temporary files
 *.tmp
 *.temp
-
-# Vercel
-.vercel 
-.vercel
