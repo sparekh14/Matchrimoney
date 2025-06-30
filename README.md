@@ -23,48 +23,6 @@ Matchrimoney is a comprehensive web platform that helps engaged couples save mon
 - Hair & Makeup
 - Wedding Attire
 
-## 🏗️ Tech Stack
-
-### Frontend
-- **React.js** with TypeScript
-- **Tailwind CSS** for styling
-- **React Router** for navigation
-- **React Hook Form** with Zod validation
-- **Axios** for API calls
-- **Lucide React** for icons
-
-### Backend
-- **Node.js** with Express.js
-- **Prisma ORM** with PostgreSQL
-- **JWT** for authentication
-- **Zod** for request validation
-- **Nodemailer** for email services
-- **Helmet** for security
-
-## 📱 Usage Guide
-
-### Getting Started
-1. **Sign Up**: Create an account with your wedding details
-3. **Complete Profile**: Add your bio and edit wedding preferences
-4. **Browse Marketplace**: Discover compatible couples using custom filtering
-5. **Start Messaging (Future)**: Connect with couples that match your criteria
-
-### Key Features
-
-#### Smart Matching Algorithm
-The platform uses a sophisticated compatibility scoring system:
-- **Date Proximity (40%)**: Couples with closer wedding dates score higher
-- **Location Match (30%)**: Geographic proximity for vendor sharing
-- **Budget Similarity (20%)**: Similar budget ranges for cost-sharing opportunities
-- **Shared Interests (10%)**: Common vendor categories of interest
-
-#### Marketplace Filtering
-- Search by location (city, state)
-- Filter by wedding date range
-- Filter by wedding theme
-- Filter by budget range
-- Filter by vendor categories
-
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

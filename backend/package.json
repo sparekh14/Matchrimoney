@@ -10,6 +10,7 @@
     "build": "tsc -p tsconfig.build.json",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
+    "db:migrate:prod": "prisma migrate deploy",
     "db:reset": "prisma migrate reset",
     "db:seed": "bun run prisma/seed.ts",
     "db:studio": "prisma studio",
@@ -39,6 +40,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.839.0",
     "@aws-sdk/s3-request-presigner": "^3.839.0",
+    "@netlify/functions": "^4.1.8",
     "@prisma/client": "^6.10.1",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
@@ -49,6 +51,7 @@
     "multer": "^1.4.5-lts.1",
     "multer-s3": "^3.0.1",
     "nodemailer": "^7.0.3",
+    "serverless-http": "^3.2.0",
     "uuid": "^11.1.0",
     "zod": "^3.25.67"
   },

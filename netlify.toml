@@ -1,0 +1,38 @@
+[build]
+  # Build command for the frontend
+  command = "npm run build:frontend"
+  # Publish directory for the frontend
+  publish = "frontend/dist"
+  # Functions directory
+  functions = "netlify/functions"
+
+[build.environment]
+  # Node.js version
+  NODE_VERSION = "18"
+
+# Redirect all API calls to the serverless function
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+# Redirect for React Router (SPA)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions]
+  # External node modules that should be bundled
+  external_node_modules = ["express", "@prisma/client"]
+  # Use esbuild for faster builds
+  node_bundler = "esbuild"
+
+[dev]
+  # Local development command
+  command = "npm run dev"
+  # Local development port
+  port = 8888
+  # Auto-open browser
+  autoLaunch = true 
