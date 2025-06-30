@@ -65,14 +65,6 @@ The platform uses a sophisticated compatibility scoring system:
 - Filter by budget range
 - Filter by vendor categories
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -86,7 +78,7 @@ For support, email matchrimonyhelp@gmail.com or create an issue in the GitHub re
 ### Phase 1 (Current)
 - ✅ Core matching algorithm
 - ✅ Profile management
-- ✅ Marketplace filtering
+- ✅ Couple marketplace
 
 ### Phase 2 (Planned)
 - 💬 Messaging system
