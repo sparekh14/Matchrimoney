@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Request, Response, NextFunction } from 'express';
-import { Prisma } from '../../generated/prisma';
+import { Prisma } from '../../prisma/generated/client';
 import { ZodError } from 'zod';
 
 export const errorHandler = (
