@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                     String    @id @default(cuid())
+  email                  String    @unique
+  password               String
+  isEmailVerified        Boolean   @default(false)
+  emailVerificationToken String?
+  passwordResetToken     String?
+  passwordResetExpires   DateTime?
+  weddingDate            DateTime
+  weddingLocation        String
+  weddingTheme           String
+  estimatedBudget        Int
+  vendorCategories       String[]
+  profileCompleted       Boolean   @default(false)
+  bio                    String?
+  profilePicture         String?
+  allowMessages          Boolean   @default(true)
+  profileVisible         Boolean   @default(true)
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  person1FirstName       String
+  person1LastName        String
+  person2FirstName       String
+  person2LastName        String
+  initiatedMatches       Match[]   @relation("MatchInitiator")
+  receivedMatches        Match[]   @relation("MatchReceiver")
+  receivedMessages       Message[] @relation("MessageReceiver")
+  sentMessages           Message[] @relation("MessageSender")
+
+  @@map("users")
+}
+
+model Match {
+  id                     String      @id @default(cuid())
+  initiatorId            String
+  receiverId             String
+  status                 MatchStatus @default(PENDING)
+  compatibilityScore     Int?
+  sharedVendorCategories String[]
+  estimatedSavings       Int?
+  createdAt              DateTime    @default(now())
+  updatedAt              DateTime    @updatedAt
+  initiator              User        @relation("MatchInitiator", fields: [initiatorId], references: [id], onDelete: Cascade)
+  receiver               User        @relation("MatchReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  messages               Message[]
+
+  @@unique([initiatorId, receiverId])
+  @@map("matches")
+}
+
+model Message {
+  id         String   @id @default(cuid())
+  content    String
+  senderId   String
+  receiverId String
+  matchId    String?
+  isRead     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  match      Match?   @relation(fields: [matchId], references: [id])
+  receiver   User     @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  sender     User     @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
+model EmailVerification {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("email_verifications")
+}
+
+enum MatchStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  EXPIRED
+}
+
+enum VendorCategory {
+  PHOTOGRAPHER
+  VIDEOGRAPHER
+  VENUE
+  CATERING
+  FLOWERS
+  MUSIC_DJ
+  TRANSPORTATION
+  DECORATIONS
+  WEDDING_PLANNER
+  MAKEUP_HAIR
+  CAKE
+  INVITATIONS
+  RENTALS
+  OTHER
+}
