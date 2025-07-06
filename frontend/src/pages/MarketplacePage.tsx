@@ -343,7 +343,7 @@ const MarketplacePage: React.FC = () => {
                     <div className="flex gap-4 mb-4">
                       <div className="flex-1 min-w-0">
                         <h3 className="text-xl font-semibold text-gray-900 break-words">
-                          {user.person1FirstName} {user.person1LastName} & {user.person2FirstName} {user.person2LastName}
+                          {user.person1FirstName} & {user.person2FirstName}
                         </h3>
                         <p className="text-sm text-gray-500 flex items-center mt-1">
                           <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
