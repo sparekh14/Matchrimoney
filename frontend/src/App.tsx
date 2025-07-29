@@ -81,7 +81,7 @@ const App: React.FC = () => {
                 } 
               />
               
-              {/* Catch-all redirect */}
+              {/* Catch-all redirect.. */}
               <Route path="*" element={<HomePage />} />
             </Routes>
           </main>
